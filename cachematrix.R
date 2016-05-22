@@ -9,9 +9,9 @@ makeCacheMatrix <- function(x = matrix()) {
      getmat <- function() x # read the input matrix
      setinv <- function(inverse) inv <<- inverse  #make the cache inverse matrix
      getinv <- function() inv
-     list(getmat=getmat,setinv=setinv,getinv=getinv)
+     list(getmat=getmat,setinv=setinv,getinv=getinv) 
+     #"set" funciotn in the example has never been used, so I removed it
 }
-
 
 
 
@@ -19,10 +19,9 @@ makeCacheMatrix <- function(x = matrix()) {
 ## compute the inverse matrix or load the cache matrix
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
      inv <- x$getinv()
      if (!is.null(inv)){
-          print("cache value loaded")
+          message("cache value loaded")
           return(inv)
      }
      in_mat <- x$getmat()
@@ -31,5 +30,8 @@ cacheSolve <- function(x, ...) {
      inv
 }
 
+abc <- matrix(rnorm(81),9,9)
+test <- makeCacheMatrix(abc)
+cacheSolve(test)
 
 
